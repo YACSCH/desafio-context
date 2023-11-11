@@ -11,16 +11,15 @@ const Favorites = () => {
   return (
     <div>
       <h1 className="text-center p-3">Fotos favoritas</h1>
-     
+
       {likedPhotos.length > 0 ? (
         <div className="p-3 gallery grid-columns-4">
           {likedPhotos.map((photo) => (
             <Card key={photo.id}>
               <Card.Img
-                style={{ height: '14rem'}}
-                variant='top'
-                src={photo.src.medium}
-                alt={photo.alt}
+                style={{ height: "14rem" }}
+                variant="top"
+                src={photo.src.original}
               />
             </Card>
           ))}
@@ -28,8 +27,7 @@ const Favorites = () => {
       ) : (
         <p className="text-center">No hay fotos favoritas.</p>
       )}
-      </div>
-   
+    </div>
   );
 };
 export default Favorites;
