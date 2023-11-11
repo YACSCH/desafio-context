@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const GetData = async () => {
-  const base = "../../public/photos.json";
+  const base = "/photos.json";
 
   try {
     const response = await axios.get(base);
