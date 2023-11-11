@@ -1,8 +1,8 @@
-import { useContext } from "react";
-import { DataContext } from "../context/DataContext";
+import { useContext } from 'react';
+import { DataContext } from '../context/DataContext';
 
-import Card from "react-bootstrap/Card";
-import IconHeart from "./IconHeart";
+import Card from 'react-bootstrap/Card';
+import IconHeart from './IconHeart';
 
 const Gallery = () => {
   const { photos, setPhotos } = useContext(DataContext);
@@ -23,20 +23,21 @@ const Gallery = () => {
 
   return (
     <>
-      <div className="gallery grid-columns-5 p-4">
+      <div className='gallery grid-columns-5 p-4'>
         {photos.map((photo) => (
           <Card key={ photo.id } >
-            <Card.Body>
-              <Card.Img
+              <Card.Img style={{ height: '14rem'}}
+               variant="top"  
                 src={ photo.src.original }
-                style={{ width: "100%", height: "200px" }}
+                
               />
-               <button onClick={() => toggleLiked(photo.id)}>
+               <button className='btn-heart' 
+               onClick={() => toggleLiked(photo.id)}>
                 <IconHeart filled={photo.liked} />
               </button>
              
-              <Card.Text> { photo.alt }</Card.Text>
-            </Card.Body>
+              <Card.Text className='card-text' > { photo.alt }</Card.Text>
+            
           </Card>
         ))}
       </div>
