@@ -7,15 +7,14 @@ import IconHeart from "./IconHeart";
 const Gallery = () => {
   const { photos, setPhotos } = useContext(DataContext);
 
-  const toggleLiked = (photoId) => {
-    const updatedPhotos = photos.map((photo) => {
-      if (photo.id === photoId) {
-        return { ...photo, liked: !photo.liked };
-      }
-      return photo;
-    });
+  const toggleLiked = (photo) => {
+    const updatedPhotos = [...photos]; 
+    const photoIndex = updatedPhotos.findIndex((p) => p.id === photo.id); 
 
-    setPhotos(updatedPhotos);
+    if (photoIndex !== -1) {
+      updatedPhotos[photoIndex] = { ...photo, liked: !photo.liked }; 
+      setPhotos(updatedPhotos); 
+    }
   };
 
   return (
@@ -28,7 +27,7 @@ const Gallery = () => {
               variant="top"
               src={photo.src.original}
             />
-            <button className="btn-heart" onClick={() => toggleLiked(photo.id)}>
+            <button className="btn-heart" onClick={() => toggleLiked(photo)}>
               <IconHeart filled={photo.liked} />
             </button>
 
